@@ -1,0 +1,29 @@
+# Site metadata and configuration
+
+first_name: Homi
+middle_name: J.
+last_name: Bhabha
+nickname: HB
+
+icon: /assets/icon.png
+
+# Site configuration
+url: https://iam-tsr.github.io
+baseurl: /tsr-folio # leave empty for github action deployment
+width: 800px
+
+# Pages configuration
+pages:
+  - title: about
+    url: /
+  - title: projects
+    url: /projects/
+    caption: A growing collection of your cool projects.
+  - title: blog
+    url: /blog/
+    caption: simple lessons for complex tech
+  - title: publications
+    url: /publications/
+  - title: cv
+    url: /assets/cv.pdf
+    caption: A detailed overview of my academic and professional journey.

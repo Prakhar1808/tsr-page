@@ -1,0 +1,41 @@
+---
+title: 404
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}{{ site.icon }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/_style/404.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    {% include "_html/_components/navbar.html" %}
+
+    <main>
+        <div class="error-container">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Page Not Found</h2>
+            <p class="error-message">The page you're looking for doesn't exist or has been moved.</p>
+            <a href="{{ site.baseurl }}/" class="home-button" data-link>
+                <i class="fa-solid fa-home"></i> Back to Home
+            </a>
+        </div>
+    </main>
+
+    {% include "_html/_components/footer.html" %}
+
+    <script src="{{ site.baseurl }}/_scripts/_components/theme.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/_components/scroll-top.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/_components/hamburger.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/global.js"></script>
+
+</body>
+
+</html>

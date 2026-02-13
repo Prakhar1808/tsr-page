@@ -1,0 +1,23 @@
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: rgba(42, 42, 42, 0.75);
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --accent-color: #3176ff;
+    --accent-hover: #2c48e5;
+    --border-color: #3a3a3a;
+    --bg-code: rgba(49, 118, 255, 0.2);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ebebeb;
+    --bg-tertiary: rgba(235, 235, 235, 0.75);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --accent-color: #3176ff;
+    --accent-hover: #2c48e5;
+    --border-color: #e0e0e0;
+}

@@ -1,0 +1,15 @@
+cards:
+  - title: "A Concise Overview of AI History"
+    url: "https://medium.com/@iam-tsr/a-concise-overview-of-ai-history-d34f25eb1f23"
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=600&fit=crop"
+    alt: "AI History"
+  
+  - title: "Simple to Advance RNN (Part 1)"
+    url: "https://medium.com/@iam-tsr/simple-to-advance-rnn-part-1-92710a8b9a05"
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=600&fit=crop"
+    alt: "RNN Part 1"
+  
+  - title: "Simple to Advance RNN (Part 2)"
+    url: "#"
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=600&fit=crop"
+    alt: "RNN Part 2"

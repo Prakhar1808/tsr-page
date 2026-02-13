@@ -1,0 +1,58 @@
+---
+title: "{{ site.pages[0].title }}"
+permalink: "{{ site.pages[0].url }}"
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.pages[0].title }}</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}{{ site.icon }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/_style/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    {% include "_html/_components/navbar.html" %}
+
+    <main>
+        <h1 class="first_name">{{ site.first_name }}<span class="middle_name"> {{ site.middle_name }} </span><span class="last_name"> {{ site.last_name }} </span></h1>
+
+        <div class="content">
+            <div class="profile-picture">
+                <img src="{{ site.baseurl }}{{ about.profile-picture }}">
+            </div>
+
+            {% renderFile "./pages/about.md" %}
+        </div>
+
+        <div class="social-icons">
+            <a href="mailto:{{ about.email }}">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="{{ about.github }}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="{{ about.linkedin }}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="{{ about.twitter }}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </div>
+        <p class="social-icons-tagline">{{ about.end-tagline }}</p>
+    </main>
+
+    {% include "_html/_components/footer.html" %}
+
+    <script src="{{ site.baseurl }}/_scripts/_components/theme.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/_components/scroll-top.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/_components/hamburger.js"></script>
+    <script src="{{ site.baseurl }}/_scripts/global.js"></script>
+
+</body>
+
+</html>
