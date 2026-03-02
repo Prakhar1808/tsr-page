@@ -1,0 +1,78 @@
+<main>
+    <div class="intro">
+        <p class="greet">{{ site.greeting }}</p>
+        <h1 class="first_name">{{ site.first_name }}<span class="middle_name"> {{ site.middle_name }} </span><span
+                class="last_name"> {{ site.last_name }} </span></h1>
+        <p class="tagline">{{ about.tagline | markdownify }}</p>
+    </div>
+
+    <div class="content">
+        <!-- {% if about.profile.picture and about.profile.caption %} -->
+        <div class="profile-picture">
+            <img src="{{ site.baseurl }}{{ about.profile.picture }}">
+            <p class="profile-caption">{{ about.profile.caption }}</p>
+        </div>
+        <!-- {% endif %} -->
+
+        {% renderFile "./pages/about.md" %}
+    </div>
+
+    <div class="features">
+        <div class="project-feed">
+            {% if about.projects.items and about.projects.items.size > 0 %}
+            <h3 class="feature-title">{{ about.projects.feature-title }}</h3>
+            {% for project in about.projects.items %}
+            <article class="project-card">
+                <h4 class="project-title">{{ project.title }}</h4>
+                <p class="description">{{ project.description }}</p>
+                {% for link in project.links %}
+                <a class="button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer"><i
+                        class="{{ link.icon }}"></i>{{ link.name }}</a>
+                {% endfor %}
+            </article>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="paper-feed">
+            {% if about.papers.items and about.papers.items.size > 0 %}
+            <h3 class="feature-title">{{ about.papers.feature-title }}</h3>
+            {% for paper in about.papers.items %}
+            <article class="paper-card">
+                <div class="paper-card-meta">
+                    <h4 class="paper-title">{{ paper.title }}</h4>
+                    {% if paper.tags %}
+                    <div class="paper-card-tags">
+                        <span class="paper-tag"
+                            style="background-color: {{ paper.tags.bg_color }}; color: {{ paper.tags.text_color }};">{{
+                            paper.tags.subject }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <p class="date">{{ paper.date }}</p>
+                <p class="description">{{ paper.description }}</p>
+                {% for link in paper.links %}
+                <a class="button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.name }}</a>
+                {% endfor %}
+            </article>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="blog-feed">
+            {% if about.blog.items and about.blog.items.size > 0 %}
+            <h3 class="feature-title">{{ about.blog.feature-title }}</h3>
+            {% for blog in about.blog.items %}
+            <article class="blog-card">
+                <span class="date">{{ blog.date }}</span>
+                <h4 class="blog-title">
+                    <a href="{{ blog.link }}" target="_blank" rel="noopener noreferrer">{{ blog.title }}</a>
+                </h4>
+                <p class="description">{{ blog.description }}</p>
+            </article>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+</main>
