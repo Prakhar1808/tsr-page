@@ -29,7 +29,7 @@ contacts:
 
 # Site configuration
 url: https://iam-tsr.github.io
-baseurl: /tsr-folio # leave empty for github action deployment
+baseurl: /tsr-page # leave empty for github action deployment
 width: 900px
 
 # Pages configuration
