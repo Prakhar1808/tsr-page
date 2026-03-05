@@ -1,0 +1,90 @@
+<div class="intro">
+    <p class="greet">{{ site.greeting }}</p>
+    <h1 class="first_name">{{ site.first_name }}<span class="middle_name"> {{ site.middle_name }} </span><span
+            class="last_name"> {{ site.last_name }} </span></h1>
+    <p class="tagline">{{ about.tagline | markdownify }}</p>
+</div>
+
+<div class="content">
+    <!-- {% if about.profile.picture and about.profile.caption %} -->
+    <div class="profile-picture">
+        <img src="{{ site.baseurl }}{{ about.profile.picture }}">
+        <p class="profile-caption">{{ about.profile.caption }}</p>
+    </div>
+    <!-- {% endif %} -->
+
+    {% renderFile "./content/about.md" %}
+</div>
+
+<div class="features">
+    <div class="news-feed">
+        {% if about.news.items and about.news.items.size > 0 %}
+        <h3 class="feature-title">{{ about.news.feature-title }}</h3>
+        {% for news in about.news.items %}
+        <article class="news-card">
+            <span class="news-date">{{ news.date }}</span>
+            <span class="description">{{ news.description | markdownify }}</span>
+        </article>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="publication-feed">
+        {% if about.publications.items and about.publications.items.size > 0 %}
+        <h3 class="feature-title">{{ about.publications.feature-title }}</h3>
+        {% for publication in about.publications.items %}
+        <article class="publication-card">
+            <p class="publication-date">{{ publication.date }}</p>
+            <div class="publication-card-meta">
+                <h4 class="publication-title">{{ publication.title }}</h4>
+                {% if publication.tags %}
+                <div class="publication-card-tags">
+                    {% if publication.tags.bg_color and publication.tags.text_color %}
+                    <span class="publication-tag"
+                        style="--publication-tag-bg: {{ publication.tags.bg_color }}; --publication-tag-color: {{ publication.tags.text_color }};">{{publication.tags.subject
+                        }}</span>
+                    {% else %}
+                    <span class="publication-tag">{{ publication.tags.subject }}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            <p class="publication-authors">{{ publication.authors | markdownify }}</p>
+            <p class="journal">{{ publication.journal }}</p>
+            {% for link in publication.links %}
+            {% if link.icon %}
+            <a class="button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer"><i
+                    class="{{ link.icon }}"></i>{{ link.name }}</a>
+            {% else %}
+            <a class="button" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.name }}</a>
+            {% endif %}
+            {% endfor %}
+        </article>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="blog-feed">
+        {% if about.blog.items and about.blog.items.size > 0 %}
+        <h3 class="feature-title">{{ about.blog.feature-title }}</h3>
+        {% for blog in about.blog.items %}
+        <article class="blog-card">
+            <div class="blog-card-meta">
+                <span class="blog-date">{{ blog.date }}</span>
+                {% if blog.tags %}
+                <div class="card-tags">
+                    {% for tags in blog.tags %}
+                    <span class="tags">{{ tags }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <h4 class="blog-title">
+                <a href="{{ blog.link }}" target="_blank" rel="noopener noreferrer">{{ blog.title }}</a>
+            </h4>
+            <p class="description">{{ blog.description }}</p>
+        </article>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>

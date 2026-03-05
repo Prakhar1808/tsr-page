@@ -25,12 +25,6 @@ permalink: /_style/about.css
     margin-bottom: 1rem;
 }
 
-.tagline a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
 .tagline a:hover {
     text-decoration: underline;
 }
@@ -46,6 +40,7 @@ permalink: /_style/about.css
 
 .content img {
     max-width: 250px;
+    margin-bottom: 0.5rem;
 }
 
 .profile-picture {
@@ -57,7 +52,7 @@ permalink: /_style/about.css
     color: var(--text-secondary);
     font-family: 'Courier', monospace;
     text-align: center;
-    margin-top: 0.5rem;
+    /* margin-top: 1rem; */
     max-width: 250px;
 }
 
@@ -95,7 +90,7 @@ permalink: /_style/about.css
 }
 
 
-/* projects, blog & papers*/
+/* news, blog & publication*/
 .features {
     display: flex;
     gap: 2.5rem;
@@ -108,20 +103,20 @@ permalink: /_style/about.css
     font-weight: 300;
 }
 
-.blog-title, .project-title {
+.blog-title {
     font-size: var(--h4);
     font-weight: 300;   
     margin: 0 0 0.5rem 0;
 }
 
-.paper-title {
+.publication-title {
     font-size: var(--h4);
-    font-weight: 300;   
+    font-weight: 300;
     margin: 0;
 }
 
 .blog-title a {
-    font-size: var(--regular);
+    font-size: var(--h4);
     color: var(--accent-color);
     text-decoration: none;
     transition: var(--transition);
@@ -131,30 +126,34 @@ permalink: /_style/about.css
     text-decoration: underline;
 }
 
-.blog-card, .paper-card, .project-card {
+.blog-card, .publication-card {
     padding-bottom: 1rem;
 }
 
-.paper-card-meta, .project-card-meta, .blog-card-meta{
+.publication-card-meta, .blog-card-meta{
     display: flex;
     gap: 1rem;
     margin: 0 0 0.5rem 0;
 }
 
-.paper-card-meta {
-    align-items: center;
+.publication-card-meta {
+    align-items: flex-start;
 }
 
-.project-card-meta, .blog-card-meta {
+.blog-card-meta {
     align-items: baseline;
     margin: 0;
 }
 
-.paper-tag {
-    background-color: var(--paper-tag-bg, var(--accent-color));
-    color: var(--paper-tag-color, var(--text-primary));
+.publication-authors a:hover{
+    text-decoration: underline;
+}
+
+.publication-tag {
+    background-color: var(--publication-tag-bg, var(--accent-color));
+    color: var(--publication-tag-color, var(--text-primary));
     font-size: var(--very-small);
-    font-weight: 500;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -163,28 +162,37 @@ permalink: /_style/about.css
     font-family: 'Courier', monospace;
 }
 
-.paper-date {
+.publication-date {
     font-size: var(--regular);
     color: var(--text-secondary);
-    /* font-family: 'roboto', monospace; */
     margin: 0 0 0.5rem 0;
 }
 
+.journal {
+    font-style: italic;
+}
+
 .description {
-    margin-top: 0;
     font-size: var(--regular);
-    /* margin-bottom: 0.5rem; */
     color: var(--text-primary);
+}
+
+.news-card {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1rem;
 }
 
 .news-card::before {
     content: '•';
+    margin-right: 0.5rem;
 }
 
 .news-date {
     font-size: var(--regular);
     font-weight: 500;
     margin-right: 1rem;
+    white-space: nowrap;
 }
 
 .blog-date {

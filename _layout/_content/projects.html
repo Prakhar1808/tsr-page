@@ -1,0 +1,62 @@
+{% for section in projects.sections %}
+<div class="project-section">
+    <h3 class="title">{{ section.section-title }}</h3>
+    <div class="project-grid">
+        {% for project in section.projects %}
+        {% if project.image %}
+        <div class="project-item">
+            <div class="project-image">
+                <img src="{{ project.image }}" alt="{{ project.title }}" />
+            </div>
+            <div class="project-content">
+                <h4 class="project-title">{{ project.title }}</h4>
+                <p class="description">{{ project.description }}</p>
+                <section class="project-meta">
+                    {% if project.tags and project.tags.size > 0 %}
+                    <div class="card-tags">
+                        {% for tag in project.tags %}
+                        <span class="tags">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% if project.links and project.links.size > 0 %}
+                    <div class="card-links">
+                        {% for link in project.links %}
+                        <a href="{{ link.url }}" class="links" target="_blank" rel="noopener noreferrer">
+                            <i class="{{ link.icon }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </section>
+            </div>
+        </div>
+        {% else %}
+        <div class="project-item project-item-simple">
+            <div class="project-simple-header">
+                <h4 class="project-title">{{ project.title }}</h4>
+                {% if project.links and project.links.size > 0 %}
+                <div class="card-links">
+                    {% for link in project.links %}
+                    <a href="{{ link.url }}" class="links" target="_blank" rel="noopener noreferrer">
+                        <i class="{{ link.icon }}"></i>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <p class="description">{{ project.description }}</p>
+            {% if project.tags and project.tags.size > 0 %}
+            <div class="card-tags">
+                {% for tag in project.tags %}
+                <span class="tags">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+{% endfor %}

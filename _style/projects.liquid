@@ -1,0 +1,132 @@
+---
+permalink: /_style/projects.css
+---
+
+@import url('_components/global.css');
+@import url('_components/palette.css');
+
+.project-section {
+    padding: 2rem 0;
+}
+
+.title {
+    font-size: var(--h3);
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-transform: lowercase;
+    text-align: right;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.project-title {
+    font-size: var(--h4);
+    font-weight: 300;
+    color: var(--text-primary);
+}
+
+.project-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.project-item .project-image {
+    height: {{ projects.adjustment.image.height }};
+    position: relative;
+    overflow: hidden;
+}
+
+
+.project-item .project-image img {
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.project-item .project-content {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+    margin-top: 1rem;
+    gap: 1.5rem;
+}
+
+.card-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.links {
+    font-size: var(--h4);
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.links:hover {
+    color: var(--accent-color);
+}
+
+/* Simple project style */
+.project-item-simple {
+    justify-content: space-between;
+    grid-column: 1 / -1;
+}
+
+.project-simple-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-simple-header .project-title {
+    margin: 0;
+}
+
+.project-item-simple .description {
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-links {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 674px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -5,10 +5,15 @@ permalink: /_style/_components/global.css
 @import url('https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 p, h1, h2, h3, h4, h5, h6, a {
   margin: 0;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 body {
@@ -147,7 +152,7 @@ main {
 .footer {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
 }
 
@@ -182,21 +187,24 @@ main {
 }
 
 /* Hero Section */
-.section-title {
+.page-title {
     font-size: var(--h1);
     color: var(--text-primary);
     line-height: 1.2;
     font-weight: 300;
-    margin-bottom: 0;
-    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 .caption {
     margin: 0;
-    font-size: var(--regular);
+    font-size: var(--small);
     color: var(--text-primary);
     margin-bottom: 2rem;
     font-weight: 200;
+}
+
+.description a:hover {
+    text-decoration: underline;
 }
 
 .card-tags{
@@ -214,6 +222,7 @@ main {
     justify-content: center;
     padding: 0.05rem 0.7rem;
     border-radius: 999px;
+    font-family: 'Courier', monospace;
 }
 
 .button {
@@ -257,11 +266,11 @@ main {
 /* Scroll to Top Button */
 .scroll-to-top {
     position: fixed;
-    bottom: 5rem;
+    bottom: 11rem;
     right: 2rem;
     width: 45px;
     height: 45px;
-    background-color: var(--border-color);
+    background-color: var(--bg-secondary);
     color: var(--text-secondary);
     border: none;
     border-radius: 50%;
@@ -315,7 +324,7 @@ main {
         padding: 4rem 1.5rem 1rem 0;
         line-height: 1.5;
 
-        background-color: var(--bg-tertiary);
+        background-color: rgb(from var(--bg-secondary) r g b / 0.5);
         backdrop-filter: blur(6px);
         border-left: 1px solid var(--border-color);
 
