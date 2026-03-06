@@ -13,4 +13,15 @@
     <link rel="stylesheet" href="{{ site.baseurl }}{{ css }}">
     {% endif %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    {% if site.loader %}
+    <style>
+        {{ site.loader.css | safe }}
+    </style>
+    {% endif %}
+    
+    <script>
+        const storedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', storedTheme);
+    </script>
 </head>

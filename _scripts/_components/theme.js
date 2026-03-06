@@ -1,8 +1,7 @@
 // Theme management
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    updateThemeIcon(currentTheme);
 }
 
 function toggleTheme() {
