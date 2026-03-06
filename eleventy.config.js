@@ -23,9 +23,57 @@ export default async function(eleventyConfig) {
       const dataName = path.basename(file, path.extname(file));
 
       // Enrich blog posts with slug, url, external flag, and pre-rendered content
+      if (dataName === 'about') {
+        for (const item of (data.blog?.items || [])) {
+          if (item.path) {
+            const slug = path.basename(item.path, path.extname(item.path));
+            item.slug = slug;
+            item.url = `/blog/${slug}/`;
+          }
+          if (item.link) {
+            item.external = true;
+          }
+        }
+      }
+
+      if (dataName === 'projects') {
+        for (const section of (data.sections || [])) {
+          for (const project of (section.projects || [])) {
+            if (project.image && !project.image.startsWith('http://') && !project.image.startsWith('https://')) {
+              project.imageLocal = true;
+              if (!project.image.startsWith('/')) project.image = '/' + project.image;
+            }
+          }
+        }
+      }
+
+      if (dataName === 'gallery') {
+        const imageExts = new Set(['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif', '.svg']);
+        const expanded = [];
+        for (const image of (data.images || [])) {
+          if (image.path && image.path.endsWith('/')) {
+            const dirPath = path.join('./', image.path);
+            let dirEntries = [];
+            try { dirEntries = await fs.readdir(dirPath); } catch {}
+            for (const entry of dirEntries) {
+              if (imageExts.has(path.extname(entry).toLowerCase())) {
+                expanded.push({ ...image, path: '/' + image.path + entry });
+              }
+            }
+          } else {
+            expanded.push(image);
+          }
+        }
+        data.images = expanded;
+      }
+
       if (dataName === 'blog') {
         const internalPosts = [];
         for (const post of (data.posts || [])) {
+          if (post.image && !post.image.startsWith('http://') && !post.image.startsWith('https://')) {
+            post.imageLocal = true;
+            if (!post.image.startsWith('/')) post.image = '/' + post.image;
+          }
           if (post.path) {
             const slug = path.basename(post.path, path.extname(post.path));
             post.slug = slug;

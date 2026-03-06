@@ -19,15 +19,15 @@ icon: ☢️ # /assets/icon.jpg
 contacts:
   - url: mailto:you@example.com
     icon: fa-solid fa-envelope
-  - url: /
+  - url: /tsr-page/ # replace with your profile link
     icon: fa-brands fa-github
-  - url: /
+  - url: /tsr-page/
     icon: fa-brands fa-linkedin
-  - url: /
+  - url: /tsr-page/
     icon: fa-brands fa-x-twitter
-  - url: /
+  - url: /tsr-page/
     icon: fa-brands fa-medium
-  - url: /
+  - url: /tsr-page/
     icon: fa-brands fa-google-scholar
 
 
@@ -69,7 +69,7 @@ pages:
     metadata: metadata/blog.yml
 
   - title: gallery
-    caption: Here are some of my photos and artworks.
+    caption: Here are some of my designs and artworks.
     url: /gallery/
     page: _content/gallery.html
     css: /_style/gallery.css
