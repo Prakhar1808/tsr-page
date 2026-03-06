@@ -2,6 +2,13 @@
 <html lang="en">
   {% include "_components/head.njk" %}
   <body>
+    <div id="loader-wrapper">
+      {% if site.loader %}
+        {{ site.loader.html | safe }}
+      {% else %}
+        <div class="loader"></div>
+      {% endif %}
+    </div>
     {% include "_components/navbar.html" %}
     {{ content | safe }}
     {% include "_components/footer.html" %}
@@ -10,5 +17,6 @@
   <script src="{{ site.baseurl }}/_scripts/_components/theme.js"></script>
   <script src="{{ site.baseurl }}/_scripts/_components/scroll-top.js"></script>
   <script src="{{ site.baseurl }}/_scripts/_components/hamburger.js"></script>
+  <script src="{{ site.baseurl }}/_scripts/_components/gallery.js"></script>
   <script src="{{ site.baseurl }}/_scripts/global.js"></script>
 </html>
