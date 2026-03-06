@@ -5,7 +5,7 @@ permalink: /_style/_components/global.css
 @import url('https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 p, h1, h2, h3, h4, h5, h6, a {
   margin: 0;
@@ -244,7 +244,7 @@ main {
     justify-content: center;
     padding: 0.05rem 0.7rem;
     border-radius: 999px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Cousine", monospace;
 }
 
 .button {
@@ -274,7 +274,7 @@ main {
 /* Theme Toggle Icon */
 .theme-icon {
     color: var(--text-primary);
-    font-size: var(--very-small-icon);
+    font-size: var(--small-icon);
     cursor: pointer;
     transition: var(--transition);
     display: flex;
@@ -288,19 +288,19 @@ main {
 /* Scroll to Top Button */
 .scroll-to-top {
     position: fixed;
-    bottom: 11rem;
+    bottom: 12rem;
     right: 2rem;
     width: 45px;
     height: 45px;
-    background-color: var(--bg-secondary);
-    color: var(--text-secondary);
+    background-color: var(--border-color);
+    color: var(--text-primary);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--very-small-icon);
+    font-size: var(--small-icon);
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
@@ -324,7 +324,7 @@ main {
 @media (max-width: 674px) {
 
     .contact-link {
-        font-size: var(--small-icon);
+        font-size: var(--medium-icon);
     }
 
     /* Mobile Navigation */

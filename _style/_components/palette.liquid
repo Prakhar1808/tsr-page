@@ -8,7 +8,7 @@ permalink: /_style/_components/palette.css
     --bg-secondary: #1E1E1E;
     --text-primary: #e6ebe5;
     --text-secondary: #9caf9e;
-    --border-color: rgba(255, 255, 255, 0.2);
+    --border-color: color-mix(in srgb, var(--bg-primary), white 20%);
     --accent-color: #09A85A;
     --bg-code: rgba(9, 168, 90, 0.2);
 }
@@ -18,7 +18,7 @@ permalink: /_style/_components/palette.css
     --bg-secondary: #f2f2f2;
     --text-primary: #272211;
     --text-secondary: #80786b;
-    --border-color: rgba(20, 20, 20, 0.2);
+    --border-color: color-mix(in srgb, var(--bg-primary), #141414 20%);
     --accent-color: #ff8000;
     --bg-code: rgba(255, 128, 0, 0.2);
 }
@@ -37,9 +37,10 @@ permalink: /_style/_components/palette.css
     --normal: 300;
     --medium: 400;
     --bold: 500;
+    --dark: 700;
 
     /* Contact Size */
     --big-icon: 3rem;
-    --small-icon: 2.5rem;
-    --very-small-icon: 1.2rem;
+    --medium-icon: 2.5rem;
+    --small-icon: 1.2rem;
 }

@@ -17,91 +17,30 @@ permalink: /_style/404.css
 
 .error-code {
     font-size: 8rem;
-    font-weight: 450;
+    font-weight: var(--bold);
     color: var(--accent-color);
     margin: 0;
     line-height: 1;
 }
 
 .error-title {
-    font-size: 2rem;
-    font-weight: 300;
+    font-size: var(--h2);
+    font-weight: var(--normal);
     color: var(--text-primary);
     margin: 1rem 0 0.5rem;
 }
 
-.error-message {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--text-primary);
-    margin: 0 0 2rem;
-    max-width: 500px;
-}
-
-.home-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--accent-color);
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: var(--transition);
-}
-
-.home-button:hover {
-    background-color: var(--accent-hover);
-}
-
-.home-button i {
-    font-size: 1rem;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 768px) {}
+
+@media (max-width: 480px) {
+    
     .error-code {
         font-size: 6rem;
     }
 
     .error-title {
-        font-size: 1.75rem;
+        font-size: var(--h3);
     }
 
-    .error-message {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .error-code {
-        font-size: 5rem;
-    }
-
-    .error-title {
-        font-size: 1.5rem;
-    }
-
-    .error-message {
-        font-size: 0.95rem;
-        padding: 0 1rem;
-    }
-
-    .home-button {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.95rem;
-    }
 }
