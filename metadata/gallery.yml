@@ -1,25 +1,21 @@
-galleries:
-  images:
-    - src: https://images.unsplash.com/photo-1621232082074-1a7750ecc557?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1581791534721-e599df4417f7?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1620898403247-2a6e49da4f2f?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1678966432189-d58296e45ad2?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1742316963540-b9e21979a6a0?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1573398643956-2b9e6ade3456?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1633323773493-1e1e04780167?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1602020234671-15fd6180428d?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1705340863064-927ccc9c28d8?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1631984876480-f821262c2609?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1622257955271-a7c070559998?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1619500765355-8ba767d6e261?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1603813507806-0d311a6eecd1?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1572782252655-9c8771392601?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1666975896029-4a742c4811f0?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1601815264039-67c8ba1a7f98?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1707832902491-42b6d033075b?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1710255074250-43c6c63f8ca7?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1707833684948-11bd776ffdef?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1597735881932-d9664c9bbcea?auto=format&fit=crop
-    - src: https://images.unsplash.com/photo-1660122405026-02206229acc5?auto=format&fit=crop
+images:
+  - src: https://images.unsplash.com/photo-1621232082074-1a7750ecc557?auto=format&fit=crop # You can specify an external image by providing the URL. Make sure to use a high-quality image for better display.
+  - src: https://images.unsplash.com/photo-1581791534721-e599df4417f7?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1620898403247-2a6e49da4f2f?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1678966432189-d58296e45ad2?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1742316963540-b9e21979a6a0?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1573398643956-2b9e6ade3456?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1633323773493-1e1e04780167?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1602020234671-15fd6180428d?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1705340863064-927ccc9c28d8?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1631984876480-f821262c2609?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1622257955271-a7c070559998?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1619500765355-8ba767d6e261?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1603813507806-0d311a6eecd1?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1572782252655-9c8771392601?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1666975896029-4a742c4811f0?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1601815264039-67c8ba1a7f98?auto=format&fit=crop
+  - src: https://images.unsplash.com/photo-1707832902491-42b6d033075b?auto=format&fit=crop
+  - path: assets/gallery/ # You can also use local images by specifying the path relative to the site's baseurl

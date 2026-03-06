@@ -1,7 +1,11 @@
 <div class="gallery" id="gallery">
-    {% for image in gallery.galleries.images %}
+    {% for image in gallery.images %}
     <div class="gallery-item">
+        {% if image.src %}
         <img src="{{ image.src }}" alt="{{ image.alt }}">
+        {% else %}
+        <img src="{{ site.baseurl }}{{ image.path }}" >
+        {% endif %}
         <div class="gallery-overlay">
             <!-- <span class="view-icon">&#x1F50D;</span> -->
         </div>
@@ -11,5 +15,5 @@
 
 <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <img src="" alt="" id="lightboxImg">
+    <img src="" alt="" id="lightboxImg" loading="lazy">
 </div>
