@@ -47,14 +47,6 @@ permalink: /_style/gallery.css
     opacity: 0.55;
 }
 
-.view-icon {
-    font-size: 2rem;
-    color: #ffffff;
-    opacity: 0;
-    transform: scale(0.7);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
 .gallery-item:hover .view-icon {
     opacity: 1;
     transform: scale(1);
@@ -65,7 +57,7 @@ permalink: /_style/gallery.css
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.92);
+    background: var(--bg-primary);
     z-index: 9999;
     align-items: center;
     justify-content: center;
@@ -79,8 +71,6 @@ permalink: /_style/gallery.css
     max-width: 90vw;
     max-height: 90vh;
     object-fit: contain;
-    border-radius: 4px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
 
 .lightbox-close {
@@ -89,7 +79,7 @@ permalink: /_style/gallery.css
     right: 1.5rem;
     background: none;
     border: none;
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 2.5rem;
     line-height: 1;
     cursor: pointer;
