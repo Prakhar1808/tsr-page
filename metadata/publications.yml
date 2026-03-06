@@ -1,0 +1,36 @@
+publications:
+  - title: "A Deep Learning Approach to Predicting Stock Prices"
+    date: Jan 1, 2024
+    authors: "[John Doe](#), Jane Smith"
+    journal: "Journal of Financial Technology"
+    tags: { subject: physics, bg_color: skyblue, text_color: black }
+    links: [
+      { name: arXiv, url: / },
+      { name: Scholar, url: /, icon: fa-brands fa-google-scholar },
+      { name: Slides, url: / },
+      { name: PDF, url: /, icon: fa-solid fa-file-pdf },
+    ]
+
+  - title: "An Analysis of Machine Learning Algorithms for Image Classification"
+    date: Jan 1, 2022
+    authors: "Alice Johnson, Bob Brown"
+    # journal: "International Journal of Computer Vision"
+    tags: { subject: physics, bg_color: skyblue, text_color: black }
+    links: [
+      { name: arXiv, url: / },
+      { name: Scholar, url: /, icon: fa-brands fa-google-scholar },
+      { name: Slides, url: / },
+      { name: PDF, url: /, icon: fa-solid fa-file-pdf },
+    ]
+
+  - title: "A Survey of Natural Language Processing Techniques for Sentiment Analysis"
+    date: Jan 1, 2021
+    authors: "Charlie Davis, Dana Lee"
+    journal: "Journal of Artificial Intelligence Research"
+    # tags: { subject: physics, bg_color: skyblue, text_color: black }
+    links: [
+      { name: arXiv, url: / },
+      { name: Scholar, url: /, icon: fa-brands fa-google-scholar },
+      { name: Slides, url: / },
+      { name: PDF, url: /, icon: fa-solid fa-file-pdf },
+    ]

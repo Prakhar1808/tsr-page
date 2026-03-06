@@ -8,13 +8,13 @@ K-Fold Cross-Validation is a robust statistical method used to estimate the skil
 
 In K-Fold, the original dataset is randomly partitioned into k equal-sized subsamples (folds). The model is trained and tested k times:
 
-- Split: The data is divided into folds {$F_1​,F_2​,…,F_k​$}.
+- Split: The data is divided into folds {$F_1,F_2,…,F_k$}.
 
-- Iterate: In each iteration $i$, the $i$-th fold $(Fi​)$ serves as the validation set, while the remaining $k−1$ folds are combined to form the training set.
+- Iterate: In each iteration $i$, the $i$-th fold $(Fi)$ serves as the validation set, while the remaining $k−1$ folds are combined to form the training set.
 
-- Evaluate: A performance score $E_i​$ (like accuracy or Mean Squared Error) is calculated for each iteration.
+- Evaluate: A performance score $E_i$ (like accuracy or Mean Squared Error) is calculated for each iteration.
 
-The final performance estimate is the average of the values computed in the loop. If $E_i​$ is the error or score from the $i$-th fold, the total performance $E$ is the **arithmetic mean**:
+The final performance estimate is the average of the values computed in the loop. If $E_i$ is the error or score from the $i$-th fold, the total performance $E$ is the **arithmetic mean**:
 
 $$E = \frac{1}{k} \sum_{i=1}^{k} E_i$$
 
