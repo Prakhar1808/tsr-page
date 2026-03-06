@@ -1,5 +1,3 @@
-import { watch } from 'fs';
-
 export default async function(eleventyConfig) {
   const fs = await import('fs/promises');
   const yaml = await import('js-yaml');
@@ -64,6 +62,9 @@ export default async function(eleventyConfig) {
   
   // Add global data from site.yml
   eleventyConfig.addGlobalData("site", () => siteData);
+  eleventyConfig.addGlobalData("renderablePages", () => {
+    return siteData.pages.filter(p => typeof p.page === 'string');
+  });
   
   // Add renderFile filter to include markdown content
   eleventyConfig.addAsyncShortcode("renderFile", async function(filePath) {
@@ -79,11 +80,12 @@ export default async function(eleventyConfig) {
   eleventyConfig.addFilter("json", (value) => {
     return JSON.stringify(value);
   });
-  
+
   // Convert Markdown to HTML
   eleventyConfig.addFilter("markdownify", function(value) {
     if (!value) return "";
-    return md.renderInline(value);
+    // Strip zero-width spaces (U+200B) that KaTeX cannot process
+    return md.renderInline(value.replace(/\u200B/g, ''));
   });
   
   return {

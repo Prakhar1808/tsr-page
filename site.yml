@@ -3,14 +3,17 @@
 # Greeting message - optional
 greeting: Hello! I am
 
+
 # Your information
 first_name: You
 middle_name: R.
 last_name: Name
 nickname: YRN
 
+
 # Your image
 icon: ☢️ # /assets/icon.jpg
+
 
 # Contact information
 contacts:
@@ -27,10 +30,12 @@ contacts:
   - url: /
     icon: fa-brands fa-google-scholar
 
+
 # Site configuration
 url: https://iam-tsr.github.io
 baseurl: /tsr-page # leave empty for github action deployment
 width: 900px
+
 
 # Pages configuration
 pages:
@@ -62,3 +67,34 @@ pages:
     css: /_style/blog.css
     content: content/blog
     metadata: metadata/blog.yml
+
+  - title: gallery
+    caption: Here are some of my photos and artworks.
+    url: /gallery/
+    page: _content/gallery.html
+    css: /_style/gallery.css
+    content: content/gallery
+    metadata: metadata/gallery.yml
+
+  - title: cv
+    path: /assets/cv.pdf
+
+
+# Optional Custom Loading Animation (Replace the color with var(--text-primary) for theme adaptability)
+loader:
+  html: '<div class="loader"></div>'
+  css: |
+    .loader {
+      width: 60px;
+      aspect-ratio: 1;
+      --g: conic-gradient(from -90deg at 10px 10px, var(--text-primary) 90deg, #0000 0);
+      background: 
+        var(--g),
+        var(--g) 10px 10px,
+        var(--g) 20px 20px;
+      background-size: 50% 50%;
+      animation: l15 1s infinite;
+    }
+    @keyframes l15 {
+        90%,100% { background-position: -30px 30px, -20px 40px, -10px 50px } 
+    }

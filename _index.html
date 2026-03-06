@@ -1,13 +1,13 @@
 ---
 layout: base.njk
 pagination:
-  data: site.pages
+  data: renderablePages
   size: 1
   alias: pageData
-permalink: "{{ pageData.url }}"
 eleventyComputed:
   title: "{{ pageData.title }}"
   css: "{{ pageData.css }}"
+permalink: "{{ pageData.url }}"
 ---
 
 <main>
@@ -18,5 +18,7 @@ eleventyComputed:
     </div>
     {% endif %}
 
+    {% if pageData.page %}
     {% include pageData.page %}
+    {% endif %}
 </main>
