@@ -21,7 +21,8 @@
     {% endif %}
     
     <script>
-        const storedTheme = localStorage.getItem('theme') || 'dark';
+        const DEFAULT_THEME = '{{ site.default_theme }}';
+        const storedTheme = localStorage.getItem('theme') || DEFAULT_THEME;
         document.documentElement.setAttribute('data-theme', storedTheme);
     </script>
 </head>

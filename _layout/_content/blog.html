@@ -1,6 +1,6 @@
 <div class="banner">
     {% if blog.banner and blog.banner.image %}
-    <img src="{{ blog.banner.image }}" alt="{{ blog.banner.alt }}" loading="lazy" />
+    <img src="{{ blog.banner.image }}" alt="{{ blog.banner.alt }}" loading="lazy" height="{{ blog.banner.absolute_dim }}"/>
     {% endif %}
 </div>
 
@@ -25,9 +25,9 @@
                     <div class="post-image">
                         {% if post.image %}
                         {% if post.imageLocal %}
-                        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" loading="lazy" />
+                        <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" loading="lazy" height="{{ blog.post.absolute_dim }}"/>
                         {% else %}
-                        <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" />
+                        <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" height="{{ blog.post.absolute_dim }}"/>
                         {% endif %}
                         {% else %}
                         <div class="placeholder-image">No Image</div>

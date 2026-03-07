@@ -8,7 +8,7 @@
 <div class="about-content">
     {% if about.profile.picture %}
     <div class="profile-picture">
-        <img src="{{ site.baseurl }}{{ about.profile.picture }}" loading="lazy">
+        <img src="{{ site.baseurl }}{{ about.profile.picture }}" alt="Profile Picture" loading="lazy"/>
         <p class="profile-caption">{{ about.profile.caption }}</p>
     </div>
     {% endif %}

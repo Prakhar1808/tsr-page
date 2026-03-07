@@ -26,7 +26,7 @@ sections:
           { url: /, icon: fa-brands fa-github },
           { url: /, icon: fa-solid fa-globe },
         ]
-        image: assets/projects/image.png # You can also use a local image by providing the path relative to the root of your project. Make sure to place the image in the correct folder.
+        image: assets/projects/image.jpg # You can also use a local image by providing the path relative to the root of your project. Make sure to place the image in the correct folder.
         tags: [research, ml, data science, python]
 
   - section-title: other projects

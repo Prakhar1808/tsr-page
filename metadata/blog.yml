@@ -7,7 +7,7 @@ adjustment:
   # Adjust the height & width of the post cards. You can also specify an absolute height if needed.
   post:
     height: "50%"
-    width: "90%"
+    width: "80%"
     absolute_dim: "320px"
   
 banner:
@@ -43,5 +43,5 @@ posts:
   - title: A fourth blog post
     date: Apr 15, 2024
     tags: [lifestyle]
-    image: assets/blog/image.png # You can also use a local image by providing the path relative to the root of your project. Make sure to place the image in the correct folder.
+    image: assets/blog/image.jpg # You can also use a local image by providing the path relative to the root of your project. Make sure to place the image in the correct folder.
     link: /tsr-page/ # You can also use an external link.

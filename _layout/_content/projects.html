@@ -7,9 +7,9 @@
         <div class="project-item">
             <div class="project-image">
                 {% if project.imageLocal %}
-                <img src="{{ site.baseurl }}{{ project.image }}" alt="{{ project.title }}" loading="lazy"/>
+                <img src="{{ site.baseurl }}{{ project.image }}" alt="{{ project.title }}" loading="lazy" width="300"/>
                 {% else %}
-                <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy"/>
+                <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" width="300"/>
                 {% endif %}
             </div>
             <div class="project-content">

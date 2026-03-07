@@ -2,9 +2,9 @@
     {% for image in gallery.images %}
     <div class="gallery-item">
         {% if image.src %}
-        <img src="{{ image.src }}" alt="{{ image.alt }}">
+        <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy" width="300">
         {% else %}
-        <img src="{{ site.baseurl }}{{ image.path }}" >
+        <img src="{{ site.baseurl }}{{ image.path }}" loading="lazy" width="300">
         {% endif %}
         <div class="gallery-overlay">
             <!-- <span class="view-icon">&#x1F50D;</span> -->
