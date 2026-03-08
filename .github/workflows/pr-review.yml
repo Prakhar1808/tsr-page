@@ -1,0 +1,229 @@
+name: PR Review
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build-check:
+    name: Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        id: build
+        run: npm run build 2>&1 | tee build-output.txt
+
+      - name: Upload build output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ./_site
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build-output.txt
+
+  html-check:
+    name: HTML Validation
+    needs: build-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: ./_site
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install html-validate
+        run: npm install -g html-validate
+
+      - name: Validate HTML
+        id: html-validate
+        continue-on-error: true
+        run: |
+          html-validate "./_site/**/*.html" 2>&1 | tee html-validate-output.txt
+          echo "exit_code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload HTML validation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-validate-log
+          path: html-validate-output.txt
+
+  link-check:
+    name: Link Check
+    needs: build-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: ./_site
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install broken-link-checker
+        run: npm install -g broken-link-checker
+
+      - name: Start local server
+        run: npx serve ./_site -l 8080 &
+
+      - name: Wait for server
+        run: sleep 3
+
+      - name: Check links
+        id: link-check
+        continue-on-error: true
+        run: |
+          blc http://localhost:8080 --recursive --ordered --exclude-external 2>&1 | tee link-check-output.txt
+          echo "exit_code=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload link check log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-log
+          path: link-check-output.txt
+
+  review-summary:
+    name: Post Review Summary
+    needs: [build-check, html-check, link-check]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download build log
+        uses: actions/download-artifact@v4
+        with:
+          name: build-log
+          path: ./logs
+
+      - name: Download HTML validation log
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: html-validate-log
+          path: ./logs
+
+      - name: Download link check log
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: link-check-log
+          path: ./logs
+
+      - name: Generate review summary
+        id: summary
+        run: |
+          BUILD_STATUS="${{ needs.build-check.result }}"
+          HTML_STATUS="${{ needs.html-check.result }}"
+          LINK_STATUS="${{ needs.link-check.result }}"
+
+          {
+            echo "## PR Review Summary"
+            echo ""
+
+            if [ "$BUILD_STATUS" = "success" ]; then
+              echo "- :white_check_mark: **Build**: Passed"
+            else
+              echo "- :x: **Build**: Failed"
+            fi
+
+            if [ "$HTML_STATUS" = "success" ]; then
+              echo "- :white_check_mark: **HTML Validation**: Passed"
+            else
+              echo "- :warning: **HTML Validation**: Issues found"
+            fi
+
+            if [ "$LINK_STATUS" = "success" ]; then
+              echo "- :white_check_mark: **Link Check**: Passed"
+            else
+              echo "- :warning: **Link Check**: Issues found"
+            fi
+
+            echo ""
+            echo "---"
+            echo ""
+
+            if [ -f ./logs/build-output.txt ]; then
+              echo "<details><summary>Build Output</summary>"
+              echo ""
+              echo '```'
+              tail -30 ./logs/build-output.txt
+              echo '```'
+              echo "</details>"
+              echo ""
+            fi
+
+            if [ -f ./logs/html-validate-output.txt ]; then
+              echo "<details><summary>HTML Validation Output</summary>"
+              echo ""
+              echo '```'
+              tail -50 ./logs/html-validate-output.txt
+              echo '```'
+              echo "</details>"
+              echo ""
+            fi
+
+            if [ -f ./logs/link-check-output.txt ]; then
+              echo "<details><summary>Link Check Output</summary>"
+              echo ""
+              echo '```'
+              tail -50 ./logs/link-check-output.txt
+              echo '```'
+              echo "</details>"
+            fi
+          } > review-comment.md
+
+          # Set multiline output
+          {
+            echo "comment<<ENDOFCOMMENT"
+            cat review-comment.md
+            echo "ENDOFCOMMENT"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Post PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-review
+          message: ${{ steps.summary.outputs.comment }}
