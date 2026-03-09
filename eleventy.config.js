@@ -1,4 +1,4 @@
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
   const fs = await import('fs/promises');
   const yaml = await import('js-yaml');
   const path = await import('path');
@@ -8,7 +8,23 @@ export default async function(eleventyConfig) {
   const md = markdownIt.default({ html: true });
   md.use(texmath.default, { engine: katex.default, delimiters: 'dollars', katexOptions: { output: 'html' } });
 
-  md.renderer.rules.image = function(tokens, idx, options, env, self) {
+  // Add target="_blank" and rel="noopener noreferrer" to external links
+  function addTargetBlank(mdInstance) {
+    const defaultRender = mdInstance.renderer.rules.link_open ||
+      function (tokens, idx, options, env, self) { return self.renderToken(tokens, idx, options); };
+    mdInstance.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+      const href = tokens[idx].attrGet('href');
+      if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+        tokens[idx].attrSet('target', '_blank');
+        tokens[idx].attrSet('rel', 'noopener noreferrer');
+      }
+      return defaultRender(tokens, idx, options, env, self);
+    };
+  }
+  addTargetBlank(md);
+
+  // Wrap images in <figure> with alt text as <figcaption>
+  md.renderer.rules.image = function (tokens, idx, options, env, self) {
     const token = tokens[idx];
     const src = token.attrGet('src') || '';
     const alt = token.content || '';
@@ -23,11 +39,11 @@ export default async function(eleventyConfig) {
 
   const siteContent = await fs.readFile('./site.yml', 'utf-8');
   const siteData = yaml.load(siteContent);
-  
+
   // Load all YAML files from data directory
   const dataDir = './metadata';
   const dataFiles = await fs.readdir(dataDir);
-  
+
   for (const file of dataFiles) {
     if (file.endsWith('.yml') || file.endsWith('.yaml')) {
       const filePath = path.join(dataDir, file);
@@ -67,7 +83,7 @@ export default async function(eleventyConfig) {
           if (image.path && image.path.endsWith('/')) {
             const dirPath = path.join('./', image.path);
             let dirEntries = [];
-            try { dirEntries = await fs.readdir(dirPath); } catch {}
+            try { dirEntries = await fs.readdir(dirPath); } catch { }
             for (const entry of dirEntries) {
               if (imageExts.has(path.extname(entry).toLowerCase())) {
                 expanded.push({ ...image, path: '/' + image.path + entry });
@@ -105,17 +121,17 @@ export default async function(eleventyConfig) {
       eleventyConfig.addGlobalData(dataName, () => data);
     }
   }
-  
+
   // Watch YAML files for changes
   eleventyConfig.addWatchTarget("./site.yml", {
-		resetConfig: true
-	});
+    resetConfig: true
+  });
   eleventyConfig.addWatchTarget("./metadata/", {
-		resetConfig: true
-	});
+    resetConfig: true
+  });
   eleventyConfig.addWatchTarget("./content/", {
-		resetConfig: true
-	});
+    resetConfig: true
+  });
 
   // Copy files to output
   eleventyConfig.addPassthroughCopy("_pages");
@@ -123,35 +139,36 @@ export default async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_style");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("content");
-  
+
   // Add global data from site.yml
   eleventyConfig.addGlobalData("site", () => siteData);
   eleventyConfig.addGlobalData("renderablePages", () => {
     return siteData.pages.filter(p => typeof p.page === 'string');
   });
-  
+
   // Add renderFile filter to include markdown content
-  eleventyConfig.addAsyncShortcode("renderFile", async function(filePath) {
+  eleventyConfig.addAsyncShortcode("renderFile", async function (filePath) {
     const fs = await import('fs/promises');
     const markdownIt = await import('markdown-it');
     const md = markdownIt.default();
-    
+    addTargetBlank(md);
+
     const content = await fs.readFile(filePath, 'utf-8');
     return md.render(content);
   });
-  
+
   // Add JSON filter for serializing data
   eleventyConfig.addFilter("json", (value) => {
     return JSON.stringify(value);
   });
 
   // Convert Markdown to HTML
-  eleventyConfig.addFilter("markdownify", function(value) {
+  eleventyConfig.addFilter("markdownify", function (value) {
     if (!value) return "";
     // Strip zero-width spaces (U+200B) that KaTeX cannot process
     return md.renderInline(value.replace(/\u200B/g, ''));
   });
-  
+
   return {
     pathPrefix: siteData.baseurl,
     dir: {
