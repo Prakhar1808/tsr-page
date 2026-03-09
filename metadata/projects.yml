@@ -49,3 +49,6 @@ sections:
           { url: /tsr-page/, icon: fa-solid fa-video },
         ]
         tags: [writing, research, ml, data science, python, kaggle, video]
+      
+      - title: "[Another project](/tsr-page/)"
+        description: A brief description of another project. It is about something else that is also very interesting and useful. You should also check it out!
