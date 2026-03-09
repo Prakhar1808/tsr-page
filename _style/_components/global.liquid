@@ -18,8 +18,9 @@ a {
 
 body {
     margin: 0;
+    line-height: 1.5;
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
+    font-weight: var(--normal);
     background-color: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
@@ -341,7 +342,11 @@ main {
 .content p {
     margin-bottom: 1rem;
     color: var(--text-primary);
-    line-height: 1.5;
+}
+
+.content strong,
+.content b {
+    font-weight: var(--bold);
 }
 
 .content a {
