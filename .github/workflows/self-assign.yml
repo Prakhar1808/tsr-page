@@ -1,0 +1,14 @@
+name: Assign issue on comment
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  self-assign:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: 'Self-assign issue on ".take" comment'
+        uses: bdougie/take-action@v2.0.0
+        with:
+          command: '.take' # The command to listen for
