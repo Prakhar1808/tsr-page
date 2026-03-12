@@ -3,7 +3,7 @@
 
 # tsr-page
 
-<img src=".github/docs/mockups/banner_black.jpg" alt="tsr-page preview" style="width:100%;">
+<img src=".github/assets/mockups/banner_black.jpg" alt="tsr-page preview" style="width:100%;">
 
 **A minimal, modern academic profile template for scholars and designers.**
 **Powered by [Eleventy](https://www.11ty.dev/) — zero-config, fast, and easy to customize.**
@@ -52,7 +52,7 @@
 
 | Desktop | Tablet |
 |:---:|:---:|
-| <img src=".github/docs/mockups/desktop.png" width="500"> | <img src=".github/docs/mockups/tablet.png" width="300"> |
+| <img src=".github/assets/mockups/desktop.png" width="500"> | <img src=".github/assets/mockups/tablet.png" width="300"> |
 
 ## Getting Started
 
@@ -67,7 +67,7 @@
 
 1. **Use this template** — click the **Use this template** button on GitHub (or import the repo).
 
-   ![Use this template](.github/docs/instruct-template.png)
+   ![Use this template](.github/assets/instruct-template.png)
 
 2. **Clone your new repo**
 
